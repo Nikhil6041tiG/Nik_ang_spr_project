@@ -1,0 +1,145 @@
+<p>payments-form works!</p>
+
+<div class="container">
+    <div class="paymentModes">
+        <h3>Payment Modes</h3>
+
+        <table class="table table-hovered">
+            <tbody>
+
+                <tr class="modes"><td>
+                    <input type="radio"  name="paymentMode" id="basedOnId" value="upi" [(ngModel)]="isSelected">&nbsp;
+                    <label for="basedOnId">UPI</label>
+                </td>
+                </tr>
+                
+                <tr class="modes"><td>
+                    <input type="radio" id="debitLabel" name="paymentMode" value="debit" [(ngModel)]="isSelected">&nbsp;
+                    <label for="debitLabel">Debit card</label>
+                </td></tr>
+                
+                <tr class="modes"><td>
+                    <input type="radio" id="netLabel" name="paymentMode" value="netbank" [(ngModel)]="isSelected">&nbsp;
+                    <label for="netLabel">Net Banking</label>
+                </td></tr>                   
+            </tbody>
+        </table>
+        
+    </div>
+       <!-- <h1>{{newPrice}}</h1> -->
+    
+        <!--    ------------------------------------------------------------------------------   -->
+            <!----------------------------------------- display selected details -------------------->
+
+    <div class="selectedItem">
+
+        <div class="selectedItemData">
+            <div class="imageContainer">
+            <img src="images/image{{selectedItemId}}.jpeg">
+        </div>
+            <p><b>Selected Product Details</b></p>
+            <table class="table table-hover">
+                <tr><th>Id:</th><td>{{selectedItemId}}</td></tr><br>
+                <tr><th>Name:</th><td>{{selectedItemName}}</td></tr><br>
+                <tr><th>Desc:</th><td>{{selectedItemDesc}}</td></tr><br>
+                <tr><th>Rating:</th><td>{{selectedItemRating}}</td></tr><br>
+                <tr><th>Price:</th><td>{{selectedItemPrice|currency:'INR'}}</td></tr>
+
+            </table>
+            
+        </div>
+    </div>
+
+    <!----------------------------------------------------------------------------------------->
+    <div class="paymentForms">
+
+        <div *ngIf="isSelected===''" style="display:flex; align-items: center; justify-content: center;">
+            <h3>Select any one mode of payment</h3>
+        </div>
+        <!--    ------------------------- UPI id div ----------------------------------   -->
+        <div *ngIf="isSelected==='upi'">
+            <h3>Google pay UPI</h3><br>
+            <h6>UPI ID</h6>
+            <form [formGroup]="upiForm" (ngSubmit)="upiSubmit()">
+                <div>
+                    <input type="text" formControlName="upiId" placeholder="Enter UPI ID" style="width:100%; padding:4px">
+                    <div *ngIf="upiForm.controls['upiId'].invalid && upiForm.controls['upiId'].touched">
+                        <small class="text-danger">Invalid UPI Id!.</small>
+                    </div>  
+                </div>
+                <br>
+                <input type="button" class="btn btn-dark w-100" value="Verify"><br><br>
+                <button class="btn btn-success w-100" type="submit">Pay {{newPrice | currency:'INR'}}</button>
+            </form>  
+        </div>
+        <!--    ------------------------------------------------------------------------------   -->
+
+        <!--    ------------------------- Debit id div ----------------------------------   -->
+
+        <div class="debitClass" *ngIf="isSelected==='debit'">
+            <h3>Debit Card</h3><br>
+            <div>
+                <form [formGroup]="debitForm" (ngSubmit)="debitSubmit()">
+                    <div style="margin-bottom:10px;">
+                        <h6>Debit card number:</h6>
+                        <input type="text" formControlName="debitCardNum" placeholder="xxxx xxxx xxxx xxxx" 
+                        (input)="formatNumber()" maxlength="19" minlength="19" autocomplete="off" style="width:100%">
+                        <div *ngIf="debitForm.controls['debitCardNum'].invalid && debitForm.controls['debitCardNum'].touched">
+                            <small class="text-danger">Enter 16 digit card number</small>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <span style="margin:0px 45px 0px 4px"><b>Valid Thru</b></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><b>CVV</b></span><p></p>
+                        <input class="dates" id="date" type="text" placeholder="MM/YYYY" style="width:48%">
+                        
+                        <input class="dates" id="cvv" type="text" placeholder="CVV" maxlength="3" style="width:48%">
+                    </div>
+                    <br>
+                    <b>Product Price: </b><input type="text" style="margin:10px 0px 10px 0px" disabled value="{{newPrice|currency:'INR'}}"><br>
+
+                    <button class="btn btn-success w-100" type="submit">Pay {{newPrice| currency:'INR'}}</button>
+
+                </form>
+            </div>
+            </div>
+        <!--    ------------------------------------------------------------------------------   -->
+
+        <!--    ------------------------- Netbanking id div ----------------------------------   -->
+        <div *ngIf="isSelected==='netbank'">
+            <h3>NetBanking Payment</h3><br>
+            <div>
+                <form [formGroup]="netBankForm" (ngSubmit)="debitSubmit()">
+                    <div style="margin-bottom:10px;">
+                        <h6>Bank Selection</h6>
+                        <select name="bank name" style="width:100%; padding:3px; margin-bottom:10px">
+                            <option>Choose your bank</option>
+                            <option>Bank of baroda</option>
+                            <option>Central Bank of india</option>
+                            <option>State Bank of India</option>
+                            <option>HDFC</option>
+                        </select>
+                        <h6>LogIn Credentials</h6>
+                        <input type="text" formsControlName="debitCardNum" placeholder="User ID" style="width:100%; padding:3px; margin-bottom:10px;">
+                        <input type="password" placeholder="Password" style="width:100%; padding:3px; margin-bottom:10px">
+                        <button class="btn btn-info w-100" type="submit" style="margin-bottom:10px"><b>Log In</b></button>
+                        <h6>Transaction Authorization</h6>
+                        <input type="text" placeholder="Enter OTP.." style="width:100%; padding:3px; margin-bottom:10px;">
+                        <button type="submit" class="btn btn-info w-100"><b>Confirm</b></button>
+                        <input type="text" style="margin:10px 0px 10px 0px" disabled value="{{newPrice|currency:'INR'}}"><br>
+                        <button class="btn btn-success w-100"><b>Pay</b></button>
+                        <!-- <div *ngIf="debitForm.controls['debitCardNum'].invalid && debitForm.controls['debitCardNum'].touched">
+                            <small class="text-danger">Enter 16 digit card number</small>
+                        </div> -->
+                    </div>
+                </form>
+            </div>
+                    
+        </div>
+
+    <!-- </div> -->
+</div>
+
+<!--
+
+-->

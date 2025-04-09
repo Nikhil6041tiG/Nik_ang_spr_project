@@ -1,0 +1,131 @@
+.selected
+{
+    color:green;
+    background-color: rgb(230, 231, 232);
+}
+a{
+    cursor:pointer;
+}
+.text-danger
+{
+    color:red;
+}
+
+.dates
+{
+    width:88px;
+}
+#cvv
+{
+    margin-left:10px;
+    margin-top:0;
+}
+span{
+    padding-bottom:0px;
+    margin-bottom: 0px;
+}
+.container
+{
+    display:grid;
+    grid-template-areas: 
+    "a b"
+    "c b";
+    grid-template-columns:250px,350px;
+    width:600px;
+    height:600px;
+    border:1px solid rgb(225, 225, 235);
+    /* padding:8px 5px 8px 5px; */
+    border-radius: 10px;
+}
+
+.paymentModes
+{
+    border:2px solid rgb(203, 205, 203);
+    background-color: rgb(242, 242, 242);
+    margin:10px 5px 0px 5px;
+    width:250px;
+    height:200px;
+    padding:15px 10px 15px 15px;
+    
+    border-radius:10px;
+}
+.selectedItem
+{
+    border:2px solid rgb(203, 205, 203);
+    background-color: rgb(242, 242, 242);
+    width:250px;
+    height:360px;
+    border-radius:10px;
+    margin:0px 5px 5px 5px;
+    
+
+
+}
+.selectedItemData
+{
+    width:230px;
+    height:340px;
+    /* border:1px solid red; */
+    text-align: left;
+    margin:10px;
+    padding-right: 5px;
+    overflow-y: auto;
+    
+}
+
+.selectedItemData::-webkit-scrollbar
+{
+    width:3px;
+    height:3px;
+}
+
+.selectedItemData::-webkit-scrollbar-track {
+    background: #171717; /* track color */
+    border-radius: 10px;
+  }
+  
+  .selectedItemData::-webkit-scrollbar-thumb {
+    background: #f5f503; /* thumb color */
+    border-radius: 10px;
+  }
+  
+  .selectedItemData::-webkit-scrollbar-thumb:hover {
+    background: #f50303; /* thumb hover color */
+  }
+
+  .imageContainer
+  {
+    width:230px;
+    height:160px;
+    /* border:1px solid red; */
+    
+  }
+  img{
+    width:220px;
+    height:150px;
+    border-radius:5px;
+    border:1px solid rgb(176, 176, 177);
+  }
+
+.paymentForms
+{
+    border:2px solid rgb(212, 212, 211);
+    margin:10px 0px 5px 5px;
+    padding:10px 10px 10px 15px;
+    width:300px;
+    height:570px;
+    background-color:rgb(242, 242, 242);
+    border-radius:10px;
+}
+
+.paymentModes{grid-area:a;}
+.selectedItem{grid-area:c;}
+.paymentForms{grid-area:b;}
+
+.modes{
+    border:1px solid rgb(219, 217, 217); 
+    width:150px; 
+    border-radius:10px;
+   
+    margin:5px;
+}

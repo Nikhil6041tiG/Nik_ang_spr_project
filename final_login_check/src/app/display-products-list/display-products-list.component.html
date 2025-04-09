@@ -1,0 +1,27 @@
+<!-- <p>display-products-list works!</p> -->
+<div class="jumbotron">
+    <h2 style="text-align: center;" class="heading_title">WELCOME TO RELIANCE DIGITAL</h2>
+</div>
+<br>
+<div class="container">
+    <div *ngFor='let product of productsList'>
+            <div class="boxFormat">
+                <table>
+                    <tbody>
+                        
+                    <tr> <td>Product Id : {{product.prod_id}}</td> </tr>
+                    <tr><td><img class="image" src="/images/image{{product.prod_id}}.jpeg" alt="not found prod image" 
+                        width="200" height="200"></td></tr>
+                    <tr><th>Product Name: {{product.prod_name}}</th></tr>   
+                    <tr><td>Product Details : {{product.prod_desc}}</td></tr>  
+                    <tr><td>Product Rating : {{product.prod_rating}}</td></tr>    
+                    <tr><th>Product Price : {{product.prod_price | currency : 'INR'}}</th></tr>
+                   <tr><button class="btn btn-sm btn-warning">Add to cart</button> &nbsp; 
+                       <button class="btn btn-sm btn-success" (click)="moveToPaymentsPage(product.prod_id)">Buy now</button></tr>
+                </tbody>
+                </table>
+            </div>
+            <br>
+    </div>
+</div>    
+

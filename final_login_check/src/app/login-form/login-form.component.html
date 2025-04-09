@@ -1,0 +1,72 @@
+<!-- <p>login-form works!</p> -->
+<h2 style="text-align: center; padding-top:15px; font-family:fantasy;">Dual Authentication Ecommerce website </h2>
+<div class="container">
+    <div class="boxShape">
+        <div>
+            
+            <div>
+            <h1 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color:black">App name</h1>
+            </div>
+            
+        </div>
+        <br>
+        <div class="login_form_border">
+            <div class="loginForm_heading">
+                <h5>LOGIN FORM</h5>
+            </div>
+            <div class="login_form">
+                                
+                <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+                    <div class="email-container">
+                        <input type="email" formControlName="email" placeholder="Enter email id here.." class="inputField1">
+                <div *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched" style="margin-bottom: 0px;">
+                            <p>email id must contains {{'@'}} symbol</p>
+                        </div>
+                    </div>
+                        
+                    <div class="password-container">
+ <input [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="Enter password here..." class=inputField2>
+                        <div *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
+                            <p>Password must contains one spcl char, one capital letter, one number, one small char</p>
+                        </div>
+                        
+                    </div>
+<a class="show_password" *ngIf="showPassword; else elseBlock" (click)="showPassword = !showPassword" style="color:red;">show password</a>
+                    <ng-template #elseBlock>
+                        <a class="show_password" (click)="showPassword = !showPassword" style="color:blue;">show password</a>
+                    </ng-template>
+                    <br><br>
+
+                    <div>
+                        <button type="submit" class="btn btn-info" [disabled]="loginForm.invalid" style="cursor:pointer">Log In</button>
+                        &nbsp; &nbsp;
+                        <button type="reset" class="btn btn-warning">Reset</button>
+                        <br><br>
+                        <p>Already have an account? <a href="#">Sign up</a></p>
+                        
+                        <p>privacy policy <a href="#">Terms and conditions</a></p>
+                        <a href="#" class="forgot">Forgot password?</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="#" class="forgot">Forgot email?</a>
+
+                       
+                        
+                    </div>
+                    <br>
+                    <span style="font-size: larger"><b>{{message}}</b></span>
+
+                    
+                </form>
+                
+                <div *ngIf="isLoading" class="loading-overlay">
+                    <div class="loading-content">
+                    <div class="spinner"></div>
+                    <p>Processing.. please wait.</p>
+                </div>
+
+                </div>
+               
+                
+            </div>
+        </div>
+        </div>
+</div>

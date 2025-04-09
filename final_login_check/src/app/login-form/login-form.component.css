@@ -1,0 +1,120 @@
+.container
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    text-align:center;   
+    color:white; 
+}
+.login_form_border
+{
+    border:1px solid black;
+    width:350px;
+    height:455px;
+    padding-top:10px;
+    border-radius: 10px;
+    background: 
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+    url("C:/Users/DELL/OneDrive/Pictures/colorfulImage_wallpaper.jpg");
+    background-size: cover;
+   
+}
+.forgot
+{
+    text-decoration: none;
+    color:yellow;
+    cursor:pointer;
+}
+.loginForm_heading
+{
+    padding-bottom: 10px;;
+}
+.inputField1
+{
+    width:300px; 
+    height:35px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: 10px;  
+}
+
+.inputField2
+{
+    width:300px; 
+    height:35px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    margin-top:0px;
+}
+
+.checkbox
+{
+    cursor:pointer;
+    margin-left: 0px;
+    display: flex;
+    position:initial;
+    margin-left:100px;
+    margin-top:15px; 
+}
+
+.show_password
+{
+    cursor: pointer; 
+    width:15px; 
+    height:20px;
+    background-color: white;
+    padding:3px;
+    text-decoration: none;   
+}
+.password-container
+{
+    margin-top:15px;
+}
+.btn
+{
+    cursor:pointer;
+}
+.btn:hover{
+    transform:scale(1.05);
+    transition:0.3s;  
+}
+.loading-overlay{
+  position:fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* semi-transparent black */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.loading-content {
+    color: white;
+    text-align: center; 
+  }
+
+.spinner 
+{
+    width:80px;
+    height:80px;
+    border:10px solid #f3f3f3; /* Light grey */
+    border-top:10px solid rgb(20, 183, 227);
+    border-radius:50%;
+    animation:spin 2s linear infinite;
+}
+@keyframes spin{
+    0% {transform:rotate(0deg);}
+    100% {transform:rotate(360deg);}
+    
+
+}
+/* 
+@media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      padding: 10px;
+    }
+  } */

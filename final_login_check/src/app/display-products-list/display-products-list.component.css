@@ -1,0 +1,36 @@
+.boxFormat
+{
+    border: 1px solid #bcbec0; 
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+     background-color: #ebedef; 
+    width:400px;
+    height:460px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    overflow-y:auto;  
+}
+.container
+{
+    display:flex;
+    flex-wrap: wrap;
+    border:1px solid #c4c1c1;
+    width:100%;    justify-content: space-evenly;
+}
+.image
+{
+    border:1px solid black;
+    border-radius:5px;
+}
+.image:hover{
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+.boxFormat:hover{
+    transform: scale(1.02);
+    transition: 0.3s;
+    background-color: #bbbdbe;
+}
+.heading_title {   padding-top:15px;}
